@@ -1,4 +1,4 @@
-package API_REST.ApiRestBasica.model.entity.dao;
+package API_REST.ApiRestBasica.model.dao;
 
 import org.springframework.data.repository.CrudRepository;
 

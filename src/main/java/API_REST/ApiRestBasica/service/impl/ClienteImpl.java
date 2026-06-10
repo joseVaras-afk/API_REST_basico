@@ -5,8 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import API_REST.ApiRestBasica.model.dao.ClienteDao;
 import API_REST.ApiRestBasica.model.entity.Cliente;
-import API_REST.ApiRestBasica.model.entity.dao.ClienteDao;
+import API_REST.ApiRestBasica.model.entity.dto.ClienteDto;
 
 @Service
 public class ClienteImpl implements ICliente {
@@ -28,7 +29,13 @@ public class ClienteImpl implements ICliente {
 
     @Transactional
     @Override 
-    public Cliente save(Cliente cliente) {
+    public Cliente save(ClienteDto clienteDto) {
+        Cliente cliente = Cliente.builder()
+                .id(clienteDto.getId())
+                .nombre(clienteDto.getNombre())
+                .correo(clienteDto.getCorreo())
+                .telefono(clienteDto.getTelefono())
+                .build();
         return clienteDao.save(cliente);
     }
     
