@@ -31,8 +31,9 @@ public class ClienteController {
     
     @PostMapping("cliente")
     public ResponseEntity<?> create( @RequestBody ClienteDto clienteDto) {
+        ClienteDto clienteSave = clienteDto;
         try{
-        Cliente clienteSave = clienteService.save(clienteDto);
+        clienteService.save(clienteDto);
         return new ResponseEntity<>(MesajeResponse.builder()
                 .mensaje("Cliente creado con exito")
                 .object(clienteSave)
